@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <iframe id="framea" src="http://192.168.99.16:9898" frameborder="0"></iframe>
+    <iframe id="frameb" src="http://192.168.99.16:9797" frameborder="0"></iframe>
+    <script>
+        /*
+         *  发送消息的时候，要使用目标域所在的iframe对象
+         *  比如：window.frames[0]、window.parent、window.parent.frames[1]
+         *  并指定目标域地址
+         *  比如：http://location:port
+         */
+        window.variable = '我是顶级窗口'
+        window.variableobj = {
+            data: '我是顶级窗口'
+        }
+
+        function reveiveMessage(e) {
+            console.log('top>消息来自：', e.origin)
+            console.log('top>消息内容：', e.data)
+            window.frames[0].postMessage(window.variableobj, 'http://192.168.99.16:9898')
+        }
+        window.addEventListener('message', reveiveMessage, false)
+    </script>
+</body>
+
+</html>

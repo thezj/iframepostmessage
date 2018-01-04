@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    b
+    <script>
+        function reveiveMessage(e) {
+            console.log('b>消息来自：', e.origin)
+            console.log('b>消息内容：', e.data)
+        }
+        window.addEventListener('message', reveiveMessage, false)
+    </script>
+</body>
+
+</html>

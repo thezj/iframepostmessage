@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    a
+    <script>
+        function reveiveMessage(e) {
+            console.log('a>消息来自：', e.origin)
+            console.log('a>消息内容：', e.data)
+        }
+        window.addEventListener('message', reveiveMessage, false)
+        window.parent.postMessage('请给我一个变量', 'http://192.168.99.16:9999')
+        window.parent.frames[1].postMessage('我是兄弟窗口iframe,A', 'http://192.168.99.16:9797')
+    </script>
+</body>
+
+</html>
